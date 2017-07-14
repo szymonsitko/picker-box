@@ -14,18 +14,18 @@ class Boxes extends Component {
   state = {
     box1: { backgroundColor: 'pink' },
     box2: { backgroundColor: 'pink' },
-    box3: { backgroundColor: 'pink' },
+    // box3: { backgroundColor: 'pink' },
 
     // TEMPORARY!!
-    box4: { backgroundColor: 'pink' },
-    box5: { backgroundColor: 'pink' },
-    box6: { backgroundColor: 'pink' },
-    box7: { backgroundColor: 'pink' },
-    box8: { backgroundColor: 'pink' },
-    box9: { backgroundColor: 'pink' },
-    box10: { backgroundColor: 'pink' },
-    box11: { backgroundColor: 'pink' },
-    box12: { backgroundColor: 'pink' },
+    // box4: { backgroundColor: 'pink' },
+    // box5: { backgroundColor: 'pink' },
+    // box6: { backgroundColor: 'pink' },
+    // box7: { backgroundColor: 'pink' },
+    // box8: { backgroundColor: 'pink' },
+    // box9: { backgroundColor: 'pink' },
+    // box10: { backgroundColor: 'pink' },
+    // box11: { backgroundColor: 'pink' },
+    // box12: { backgroundColor: 'pink' },
   };
 
   changeBoxColor(boxId) {
@@ -48,7 +48,7 @@ class Boxes extends Component {
       const currentColor = this.state[key].backgroundColor;
       const firstColor = Object.keys(this.state)[0];
       if (currentColor == this.state[firstColor].backgroundColor) {
-        counter += 1
+        counter += 1;
       }
     }
     if (counter === Object.keys(this.state).length && Object.keys(this.state).length > 1) {
@@ -59,7 +59,7 @@ class Boxes extends Component {
   render() {
     return (
       <View style={styles.viewContainer}>
-        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box1} id={'box1'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box1} id={'box1'} first />
         <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box2} id={'box2'} />
         <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box3} id={'box3'} />
         <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box4} id={'box4'} />
@@ -85,13 +85,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center'
-  },
-  box: {
-    width: width * .3,
-    height: height * .2,
-    margin: 4,
-    borderWidth: 4,
-    borderColor: 'brown'
   },
 });
 

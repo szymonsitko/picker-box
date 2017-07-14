@@ -37,11 +37,12 @@ class Timer extends Component {
 
 const styles = {
   container: {
-    height: 36
+    backgroundColor: 'pink'
   },
   counter: {
     fontSize: 18,
-    textAlign: 'center'
+    textAlign: 'left',
+    padding: 12,
   }
 }
 

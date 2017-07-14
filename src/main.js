@@ -6,13 +6,14 @@ import {
 } from 'react-native';
 import Boxes from './components/Boxes';
 import Timer from './components/Timer';
+import { Hint } from './components/Hint';
 
 const { height, width } = Dimensions.get('window');
 
 export default class AppContainer extends Component {
-  
+
   userWonGame() {
-    alert("Won!");
+    this.refs.child.stopTimer();
   }
 
   userLostGame() {
@@ -22,7 +23,7 @@ export default class AppContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer countdownTime={3} notifyCounterStop={this.userLostGame.bind(this)}/>
+        <Timer ref="child" countdownTime={1} notifyCounterStop={this.userLostGame.bind(this)} />
         <Boxes onUserScoredGame={this.userWonGame.bind(this)} />
       </View>
     )
@@ -34,9 +35,4 @@ const styles = {
     flex: 1,
     backgroundColor: '#3399ff',
   },
-  counter: {
-    textAlign: 'center',
-    fontSize: 18,
-    padding: 2
-  }
 }
