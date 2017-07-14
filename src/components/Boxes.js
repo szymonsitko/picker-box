@@ -4,7 +4,7 @@ import {
   Dimensions,
   StyleSheet
 } from 'react-native';
-import { getRandomColor } from '../lib/ColorGenerator';
+import { getRandomColor, boxColorsGenerator } from '../lib/ColorGenerator';
 import { Box } from './Box';
 import * as constants from '../constants';
 
@@ -30,7 +30,7 @@ class Boxes extends Component {
 
   changeBoxColor(boxId) {
     let object = {};
-    object[boxId] = { backgroundColor: getRandomColor(constants.COLORS)};
+    object[boxId] = { backgroundColor: getRandomColor(boxColorsGenerator(this.props.difficulty))};
     this.setState(object);
   }
 

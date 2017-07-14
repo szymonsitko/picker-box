@@ -12,7 +12,7 @@ const { height, width } = Dimensions.get('window');
 
 export default class AppContainer extends Component {
   state = {
-    difficulty: 0
+    difficulty: 2
   }
 
   userWonGame() {
@@ -27,7 +27,7 @@ export default class AppContainer extends Component {
     return (
       <View style={styles.container}>
         <Timer ref="child" countdownTime={scoreGenerator(this.state.difficulty)} notifyCounterStop={this.userLostGame.bind(this)} />
-        <Boxes onUserScoredGame={this.userWonGame.bind(this)} />
+        <Boxes onUserScoredGame={this.userWonGame.bind(this)} difficulty={this.state.difficulty}/>
       </View>
     )
   }

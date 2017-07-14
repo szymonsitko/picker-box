@@ -10,8 +10,3 @@ export function scoreGenerator(level) {
       return 12;
   }
 }
-
-export function boxColorsGenerator() {
-  // This will return number of colors for box building,
-  // depending on the difficulty level!
-}
