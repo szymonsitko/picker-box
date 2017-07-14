@@ -4,38 +4,34 @@ import {
   View,
   Dimensions,
 } from 'react-native';
-import Boxes from './components/Boxes';
-import Timer from './components/Timer';
-import { scoreGenerator } from './lib/ScoreGenerator';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import { Provider } from 'react-redux';
+import thunkMiddleware from 'redux-thunk';
+import { createLogger } from 'redux-logger';
+import reducer from './reducers';
+import { RouterComponent } from './router';
 
-const { height, width } = Dimensions.get('window');
+const loggerMiddleware = createLogger({ predicate: (getState, action) => __DEV__});
 
-export default class AppContainer extends Component {
-  state = {
-    difficulty: 2
-  }
+// Picking available middleware for us
+function configureStore(initialState) {
+  const enhancer = compose(
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware,
+    )
+  );
+  return createStore(reducer, initialState, enhancer);
+}
 
-  userWonGame() {
-    this.refs.child.stopTimer();
-  }
+const store = configureStore({});
 
-  userLostGame() {
-    alert("Lost!");
-  }
-
+export default class PickerBox extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Timer ref="child" countdownTime={scoreGenerator(this.state.difficulty)} notifyCounterStop={this.userLostGame.bind(this)} />
-        <Boxes onUserScoredGame={this.userWonGame.bind(this)} difficulty={this.state.difficulty}/>
-      </View>
-    )
+      <Provider store={store}>
+        <RouterComponent/>
+      </Provider>
+    );
   }
-}
-
-const styles = {
-  container: {
-    flex: 1,
-    backgroundColor: '#3399ff',
-  },
-}
+};
