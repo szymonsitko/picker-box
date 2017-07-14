@@ -1,0 +1,5 @@
+import React from 'react';
+import { AppRegistry } from 'react-native';
+import AppContainer from './src/main';
+
+AppRegistry.registerComponent('PickerBox', () => AppContainer);

@@ -1,0 +1,3 @@
+rootProject.name = 'PickerBox'
+
+include ':app'
