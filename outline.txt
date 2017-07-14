@@ -1,0 +1,19 @@
+TODO's:
+
+1. Implement three different difficulty levels and time elapsed value based on those
+2. Create coundown timer that executes on score 'signal' from child component received & display it on main game component
+3. Change styling in order to make the application / boxes look better
+
+IF that all works:
+
+1. Work on screens:
+	a) Welcome / main screen (options: start, info, records)
+	b) Username & difficultu level picker option
+	c) GAME (achieved previously)
+	d) Final score / game brief screen
+2. Work on styling + orientation
+
+
+--
+Database: Realm
+

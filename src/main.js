@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
   Text,
   View,
   Dimensions,
-  TouchableOpacity
 } from 'react-native';
 import Boxes from './components/Boxes';
 
@@ -13,14 +10,27 @@ const { height, width } = Dimensions.get('window');
 
 export default class AppContainer extends Component {
   userWonGame() {
-    console.log("Won!")
+    alert("Won!");
   }
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <Text style={styles.counter}> Counter Here! </Text>
         <Boxes onUserScoredGame={this.userWonGame.bind(this)} />
       </View>
     )
+  }
+}
+
+const styles = {
+  container: {
+    flex: 1,
+    backgroundColor: '#3399ff',
+  },
+  counter: {
+    textAlign: 'center',
+    fontSize: 18,
+    padding: 2
   }
 }

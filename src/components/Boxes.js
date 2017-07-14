@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
-import { View, TouchableOpacity, Dimensions, StyleSheet } from 'react-native';
+import {
+  View,
+  Dimensions,
+  StyleSheet
+} from 'react-native';
 import { getRandomColor } from '../lib/ColorGenerator';
+import { Box } from './Box';
 import * as constants from '../constants';
 
 const { height, width } = Dimensions.get('window');
@@ -10,18 +15,20 @@ class Boxes extends Component {
     box1: { backgroundColor: 'pink' },
     box2: { backgroundColor: 'pink' },
     box3: { backgroundColor: 'pink' },
-    // box4: { backgroundColor: 'pink' },
-    // box5: { backgroundColor: 'pink' },
-    // box6: { backgroundColor: 'pink' },
-    // box7: { backgroundColor: 'pink' },
-    // box8: { backgroundColor: 'pink' },
-    // box9: { backgroundColor: 'pink' },
-    // box10: { backgroundColor: 'pink' },
-    // box11: { backgroundColor: 'pink' },
-    // box12: { backgroundColor: 'pink' },
+
+    // TEMPORARY!!
+    box4: { backgroundColor: 'pink' },
+    box5: { backgroundColor: 'pink' },
+    box6: { backgroundColor: 'pink' },
+    box7: { backgroundColor: 'pink' },
+    box8: { backgroundColor: 'pink' },
+    box9: { backgroundColor: 'pink' },
+    box10: { backgroundColor: 'pink' },
+    box11: { backgroundColor: 'pink' },
+    box12: { backgroundColor: 'pink' },
   };
 
-  _changeBoxColor(boxId) {
+  changeBoxColor(boxId) {
     let object = {};
     object[boxId] = { backgroundColor: getRandomColor(constants.COLORS)};
     this.setState(object);
@@ -52,54 +59,18 @@ class Boxes extends Component {
   render() {
     return (
       <View style={styles.viewContainer}>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box1')}>
-          <View style={[styles.box, this.state.box1 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box2')}>
-          <View style={[styles.box, this.state.box2 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box3')}>
-          <View style={[styles.box, this.state.box3 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box4')}>
-          <View style={[styles.box, this.state.box4 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box5')}>
-          <View style={[styles.box, this.state.box5 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box6')}>
-          <View style={[styles.box, this.state.box6 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box7')}>
-          <View style={[styles.box, this.state.box7 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box8')}>
-          <View style={[styles.box, this.state.box8 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box9')}>
-          <View style={[styles.box, this.state.box9 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box10')}>
-          <View style={[styles.box, this.state.box10 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box11')}>
-          <View style={[styles.box, this.state.box11 ]}>
-          </View>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => this._changeBoxColor('box12')}>
-          <View style={[styles.box, this.state.box12 ]}>
-          </View>
-        </TouchableOpacity>
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box1} id={'box1'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box2} id={'box2'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box3} id={'box3'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box4} id={'box4'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box5} id={'box5'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box6} id={'box6'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box7} id={'box7'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box8} id={'box8'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box9} id={'box9'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box10} id={'box10'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box11} id={'box11'} />
+        <Box changeBoxColor={this.changeBoxColor.bind(this)} color={this.state.box12} id={'box12'} />
       </View>
     );
   }
