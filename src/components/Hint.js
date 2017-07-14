@@ -2,29 +2,31 @@ import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
 export class Hint extends Component {
-  renderHint() {
-    if (this.props.score <= 4) {
-      return <Text style={styles.hint}>Bit far away...</Text>;
-    }
-    if (this.props.score > 4 && this.props.score <= 8) {
-      return <Text style={styles.hint}>This is much better.</Text>;
-    }
-    if (this.props.score > 8 && this.props.score < 11) {
-      return <Text style={styles.hint}>Almost there!</Text>;
-    }
-    if (this.props.score === 12) {
-      return <Text style={styles.hint}>Yeah, you nailed it!</Text>
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      difficulty: props.countdownTime
     }
   }
 
-  componentDidMount() {
-    console.log(this.props.timeLeft)
+  getLevel() {
+    switch (this.state.countdownTime) {
+      case 0:
+        return 'Easy';
+      case 1:
+        return 'Medium';
+      case 2:
+        return 'Hard';
+      default:
+        return 'Easy';
+    }
   }
 
   render() {
     return (
       <View>
-        {this.renderHint()}
+        <Text style={styles.hint}>Difficulty: {this.getLevel()}</Text>
       </View>
     )
   }
@@ -32,7 +34,7 @@ export class Hint extends Component {
 
 const styles = {
   hint: {
-    margin: 12,
-    textAlign: 'center'
-  }
+    padding: 6,
+    textAlign: 'right'
+  },
 }

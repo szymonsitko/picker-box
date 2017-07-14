@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { Hint } from './Hint';
 
 class Timer extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class Timer extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.counter}>Time Left: {this.state.totalTime}</Text>
+        <Hint style={styles.level} countdownTime={this.props.countdownTime}/>
       </View>
     );
   }
@@ -37,13 +39,14 @@ class Timer extends Component {
 
 const styles = {
   container: {
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    marginBottom: 8
   },
   counter: {
     fontSize: 18,
     textAlign: 'left',
     padding: 12,
-  }
+  },
 }
 
 export default Timer;

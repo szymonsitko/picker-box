@@ -6,11 +6,14 @@ import {
 } from 'react-native';
 import Boxes from './components/Boxes';
 import Timer from './components/Timer';
-import { Hint } from './components/Hint';
+import { scoreGenerator } from './lib/ScoreGenerator';
 
 const { height, width } = Dimensions.get('window');
 
 export default class AppContainer extends Component {
+  state = {
+    difficulty: 0
+  }
 
   userWonGame() {
     this.refs.child.stopTimer();
@@ -23,7 +26,7 @@ export default class AppContainer extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer ref="child" countdownTime={1} notifyCounterStop={this.userLostGame.bind(this)} />
+        <Timer ref="child" countdownTime={scoreGenerator(this.state.difficulty)} notifyCounterStop={this.userLostGame.bind(this)} />
         <Boxes onUserScoredGame={this.userWonGame.bind(this)} />
       </View>
     )
