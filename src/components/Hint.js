@@ -11,15 +11,13 @@ export class Hint extends Component {
   }
 
   getLevel() {
-    switch (this.state.countdownTime) {
+    switch (this.props.difficulty) {
       case 0:
         return 'Easy';
       case 1:
         return 'Medium';
       case 2:
         return 'Hard';
-      default:
-        return 'Easy';
     }
   }
 

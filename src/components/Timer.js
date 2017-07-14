@@ -31,7 +31,7 @@ class Timer extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.counter}>Time Left: {this.state.totalTime}</Text>
-        <Hint style={styles.level} countdownTime={this.props.countdownTime}/>
+        <Hint style={styles.level} difficulty={this.props.difficulty}/>
       </View>
     );
   }

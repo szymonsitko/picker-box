@@ -4,7 +4,8 @@ import {
   View,
   Text,
   Dimensions,
-  TouchableHighlight
+  TouchableHighlight,
+  TouchableWithoutFeedback
 } from 'react-native';
 
 const { height, width } = Dimensions.get('window');
@@ -21,7 +22,7 @@ export const Box = props => {
 
 const styles = {
   box: {
-    width: width * .25,
+    width: width * .275,
     height: height * .175,
     margin: 6,
     borderWidth: 8,

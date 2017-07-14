@@ -6,7 +6,5 @@ export function scoreGenerator(level) {
       return 12 * 4;
     case 2:
       return 12 * 2;
-    default:
-      return 12;
   }
 }

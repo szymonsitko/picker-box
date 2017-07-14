@@ -25,7 +25,12 @@ class Game extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer ref="child" countdownTime={scoreGenerator(this.state.difficulty)} notifyCounterStop={this.userLostGame.bind(this)} />
+        <Timer
+          ref="child"
+          countdownTime={scoreGenerator(this.state.difficulty)}
+          notifyCounterStop={this.userLostGame.bind(this)}
+          difficulty={this.state.difficulty}
+        />
         <Boxes onUserScoredGame={this.userWonGame.bind(this)} difficulty={this.state.difficulty}/>
       </View>
     )
@@ -35,7 +40,6 @@ class Game extends Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: '#3399ff',
   },
 }
 

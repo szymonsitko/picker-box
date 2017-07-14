@@ -14,18 +14,18 @@ class Boxes extends Component {
   state = {
     box1: { backgroundColor: 'pink' },
     box2: { backgroundColor: 'pink' },
-    // box3: { backgroundColor: 'pink' },
+    box3: { backgroundColor: 'pink' },
 
     // TEMPORARY!!
-    // box4: { backgroundColor: 'pink' },
-    // box5: { backgroundColor: 'pink' },
-    // box6: { backgroundColor: 'pink' },
-    // box7: { backgroundColor: 'pink' },
-    // box8: { backgroundColor: 'pink' },
-    // box9: { backgroundColor: 'pink' },
-    // box10: { backgroundColor: 'pink' },
-    // box11: { backgroundColor: 'pink' },
-    // box12: { backgroundColor: 'pink' },
+    box4: { backgroundColor: 'pink' },
+    box5: { backgroundColor: 'pink' },
+    box6: { backgroundColor: 'pink' },
+    box7: { backgroundColor: 'pink' },
+    box8: { backgroundColor: 'pink' },
+    box9: { backgroundColor: 'pink' },
+    box10: { backgroundColor: 'pink' },
+    box11: { backgroundColor: 'pink' },
+    box12: { backgroundColor: 'pink' },
   };
 
   changeBoxColor(boxId) {
