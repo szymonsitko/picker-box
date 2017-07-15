@@ -32,7 +32,8 @@ export class Hint extends Component {
 
 const styles = {
   hint: {
-    padding: 6,
-    textAlign: 'right'
+    padding: 8,
+    fontSize: 18,
+    textAlign: 'right',
   },
 }

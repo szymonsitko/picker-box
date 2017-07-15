@@ -13,7 +13,7 @@ const styles = {
   textStyle: {
     color: 'white',
     fontSize: 32,
-    padding: 18,
+    padding: 9,
     fontWeight: 'bold',
     borderBottomWidth: 12,
     borderColor: 'rgba(255,255,255,0.1)'

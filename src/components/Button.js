@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 
-export const SquareButton = props => {
+export const Button = props => {
   return (
-    <TouchableOpacity onPress={() => props.onPress()}style={[styles.box, props.style]}>
-      <Text style={[styles.boxText, props.large ? { fontSize: 76 } : {} ]}>{props.children}</Text>
+    <TouchableOpacity onPress={() => props.onPress()}>
+      <Text style={props.style}>{props.title}</Text>
     </TouchableOpacity>
   )
 }

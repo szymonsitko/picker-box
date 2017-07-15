@@ -22,8 +22,8 @@ export const Box = props => {
 
 const styles = {
   box: {
-    width: width * .275,
-    height: height * .175,
+    width: width * .265,
+    height: height * .165,
     margin: 6,
     borderWidth: 8,
     borderColor: '#99ccff',

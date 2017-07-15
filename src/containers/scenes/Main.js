@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Popup } from '../../components/Popup';
-import { SquareButton } from '../../components/SquareButton';
+import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 
 const { height, width } = Dimensions.get('window');
@@ -24,42 +24,17 @@ class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-
-        <Header title="PickerBox" background="#9B3E00"/>
-
-        
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <View style={{ flex: 1, position: 'absolute', flexDirection: 'row', justifyContent: 'center'}}>
-            <SquareButton
-            large
-            style={{ backgroundColor: '#06939B', width: 192, height: 192, borderWidth: 8, borderColor: 'rgba(255,255,255,0.1)' }}
-            onPress={() => Actions.settings()}>
-            P
-            </SquareButton>
-            <View>
-              <SquareButton
-              style={{ backgroundColor: '#ff1a1d', width: 96, height: 96, borderWidth: 4, borderColor: 'rgba(255,255,255,0.1)' }}
-              onPress={this.showRecordsModal.bind(this)}>
-              R
-              </SquareButton>
-              <SquareButton
-              style={{ backgroundColor: '#9B3E00', width: 96, height: 96, borderWidth: 4, borderColor: 'rgba(255,255,255,0.1)'}}
-              onPress={this.showInfoModal.bind(this)}>
-              I
-              </SquareButton>
-            </View>
-          </View>
+        <View style={{ flex: 1, position: 'absolute', right: 0, bottom: 0, padding: 4 }}>
+          <Button title="Play" onPress={() => Actions.settings()} style={styles.buttonText} />
+          <Button title="Records" onPress={this.showRecordsModal.bind(this)} style={styles.buttonText} />
+          <Button title="Info" onPress={this.showInfoModal.bind(this)} style={styles.buttonText} />
         </View>
-
-
         <Popup showModal={this.showInfoModal.bind(this)} modalVisible={this.state.infoModalVisible}>
-          <Header title="Info" background="#9B3E00"/>
+          <Header title="Info" background="#06939B"/>
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
           <Header title="Records" background="#ff1a1d"/>
         </Popup>
-
-
       </View>
     )
   }
@@ -68,20 +43,18 @@ class Main extends Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'black'
   },
-  boxText: {
-    fontSize: 32,
-    fontWeight: 'bold',
-    color: 'white'
+  buttonText: {
+    fontSize: 28,
+    textAlign: 'right'
   }
 }
 
 export default Main;
 
-// <TouchableOpacity onPress={() => Actions.game()} style={[styles.box, { backgroundColor: '#06939B'}]}>
-// <Text style={styles.boxText}>P</Text>
-// </TouchableOpacity>
+// <View style={{ padding: 4}}>
+//   <Text style={{ fontSize: 38}}>PickerBox</Text>
+// </View>
 // 4C9FDA6D2EFDDAFE2749132426
 
 // 122134623
