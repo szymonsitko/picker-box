@@ -3,6 +3,7 @@ import { View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Popup } from '../../components/Popup';
 import { SquareButton } from '../../components/SquareButton';
+import { Header } from '../../components/Header';
 
 const { height, width } = Dimensions.get('window');
 
@@ -23,32 +24,42 @@ class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View>
-            <Text style={{ color: 'white', fontSize: 32, padding: 18, backgroundColor: '#06939B', fontWeight: 'bold' }}>PickerBox</Text>
+
+        <Header title="PickerBox" background="#9B3E00"/>
+
+        
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          <View style={{ flex: 1, position: 'absolute', flexDirection: 'row', justifyContent: 'center'}}>
+            <SquareButton
+            large
+            style={{ backgroundColor: '#06939B', width: 192, height: 192, borderWidth: 8, borderColor: 'rgba(255,255,255,0.1)' }}
+            onPress={() => Actions.settings()}>
+            P
+            </SquareButton>
+            <View>
+              <SquareButton
+              style={{ backgroundColor: '#ff1a1d', width: 96, height: 96, borderWidth: 4, borderColor: 'rgba(255,255,255,0.1)' }}
+              onPress={this.showRecordsModal.bind(this)}>
+              R
+              </SquareButton>
+              <SquareButton
+              style={{ backgroundColor: '#9B3E00', width: 96, height: 96, borderWidth: 4, borderColor: 'rgba(255,255,255,0.1)'}}
+              onPress={this.showInfoModal.bind(this)}>
+              I
+              </SquareButton>
+            </View>
+          </View>
         </View>
-        <View style={{ flex: 1, position: 'absolute', flexDirection: 'row', right: 0, bottom: 0}}>
-          <SquareButton
-          boxColor={{ backgroundColor: '#06939B' }}
-          onPress={() => Actions.game()}>
-          P
-          </SquareButton>
-          <SquareButton
-          boxColor={{ backgroundColor: '#ff1a1d' }}
-          onPress={this.showRecordsModal.bind(this)}>
-          R
-          </SquareButton>
-          <SquareButton
-          boxColor={{ backgroundColor: '#9B3E00' }}
-          onPress={this.showInfoModal.bind(this)}>
-          I
-          </SquareButton>
-        </View>
+
+
         <Popup showModal={this.showInfoModal.bind(this)} modalVisible={this.state.infoModalVisible}>
-          <Text>Info page</Text>
+          <Header title="Info" background="#9B3E00"/>
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
-          <Text>Records page</Text>
+          <Header title="Records" background="#ff1a1d"/>
         </Popup>
+
+
       </View>
     )
   }
@@ -57,13 +68,7 @@ class Main extends Component {
 const styles = {
   container: {
     flex: 1,
-    backgroundColor: 'rgba(12,235,12,0.2)'
-  },
-  box: {
-    height: 78,
-    width: 78,
-    justifyContent: 'center',
-    alignItems: 'center'
+    backgroundColor: 'black'
   },
   boxText: {
     fontSize: 32,
