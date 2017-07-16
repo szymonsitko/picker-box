@@ -12,9 +12,8 @@ export const Header = props => {
 const styles = {
   textStyle: {
     color: 'white',
-    fontSize: 32,
-    padding: 9,
-    fontWeight: 'bold',
+    fontSize: 38,
+    padding: 12,
     borderBottomWidth: 12,
     borderColor: 'rgba(255,255,255,0.1)'
   }

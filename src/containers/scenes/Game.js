@@ -44,7 +44,7 @@ class Game extends Component {
         <Timer
           ref="child"
           notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
-          countdownTime={1}
+          countdownTime={this.state.gameTime}
           difficulty={this.props.user_object.difficulty}
         />
         <Boxes { ...this.props } notifyUserScoredGame={this.notifyUserScoredGame.bind(this)} difficulty={this.state.difficulty}/>

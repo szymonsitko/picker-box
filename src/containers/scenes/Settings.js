@@ -39,7 +39,7 @@ class Settings extends Component {
   render() {
     return (
       <View >
-        <Header title="Settings" background="coral" />
+        <Header style={{ fontFamily: 'Visitor' }} title="Settings" background="coral" />
         <View>
           <TextInput
             style={{height: 40, borderColor: 'gray', borderWidth: 1}}

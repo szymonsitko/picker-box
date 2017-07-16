@@ -24,16 +24,20 @@ class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <Text style={{ fontFamily: 'Visitor', fontSize: 82, textAlign: 'center', marginTop: height * .05 }}>PickerBox</Text>
         <View style={{ flex: 1, position: 'absolute', right: 0, bottom: 0, padding: 4 }}>
           <Button title="Play" onPress={() => Actions.settings()} style={styles.buttonText} />
           <Button title="Records" onPress={this.showRecordsModal.bind(this)} style={styles.buttonText} />
           <Button title="Info" onPress={this.showInfoModal.bind(this)} style={styles.buttonText} />
         </View>
         <Popup showModal={this.showInfoModal.bind(this)} modalVisible={this.state.infoModalVisible}>
-          <Header title="Info" background="#06939B"/>
+
+          <Header style={{ fontFamily: 'Visitor' }} title="Info" background="#06939B"/>
+          
+
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
-          <Header title="Records" background="#ff1a1d"/>
+          <Header style={{ fontFamily: 'Visitor' }} title="Records" background="#ff1a1d"/>
         </Popup>
       </View>
     )
@@ -45,8 +49,10 @@ const styles = {
     flex: 1,
   },
   buttonText: {
-    fontSize: 28,
-    textAlign: 'right'
+    fontSize: 58,
+    padding: 2,
+    textAlign: 'right',
+    fontFamily: 'Visitor'
   }
 }
 

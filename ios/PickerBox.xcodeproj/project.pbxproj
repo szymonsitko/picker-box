@@ -38,6 +38,7 @@
 		9CE31B93DA6542F48EE7EB1A /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 588C77E49FB94684A8391491 /* libRealmReact.a */; };
 		CBE53FE32DC8453088ED3B35 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCA5216C9D94728B339C213 /* libc++.tbd */; };
 		93F9AA064EE14BC2BA2B8473 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF98A22D1C047DDBAE92763 /* libz.tbd */; };
+		57CA8220A75C4E47B1AC2EB4 /* Visitor.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CB56D8A28EF423B9C218CFB /* Visitor.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -261,6 +262,7 @@
 		588C77E49FB94684A8391491 /* libRealmReact.a */ = {isa = PBXFileReference; name = "libRealmReact.a"; path = "libRealmReact.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 		4BCA5216C9D94728B339C213 /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		FCF98A22D1C047DDBAE92763 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
+		6CB56D8A28EF423B9C218CFB /* Visitor.ttf */ = {isa = PBXFileReference; name = "Visitor.ttf"; path = "../assets/fonts/Visitor.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -478,6 +480,7 @@
 				00E356EF1AD99517003FC87E /* PickerBoxTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				90B543191E614D4C96B606FA /* Frameworks */,
+				4A286999342B4BB499B32F03 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -501,6 +504,15 @@
 				FCF98A22D1C047DDBAE92763 /* libz.tbd */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+			path = "";
+		};
+		4A286999342B4BB499B32F03 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				6CB56D8A28EF423B9C218CFB /* Visitor.ttf */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 			path = "";
 		};
@@ -862,6 +874,7 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				57CA8220A75C4E47B1AC2EB4 /* Visitor.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

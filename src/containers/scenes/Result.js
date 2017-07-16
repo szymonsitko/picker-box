@@ -6,7 +6,13 @@ class Result extends Component {
   render() {
     return (
       <View>
-        <Header title="Result" background="#B54F79" />
+        <Header style={{ fontFamily: 'Visitor' }} title="Result" background="#B54F79" />
+        <View>
+          <Text>{this.props.user_object[0].user}</Text>
+          <Text>{Date(this.props.user_object[0].datestamp)}</Text>
+          <Text>{this.props.user_object[0].difficulty}</Text>
+          <Text>{this.props.user_object[0].score}</Text>
+        </View>
       </View>
     );
   }

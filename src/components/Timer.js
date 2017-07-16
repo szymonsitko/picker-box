@@ -31,7 +31,7 @@ class Timer extends Component {
   render() {
     return (
       <View>
-        <Header title={"Time Left: " + this.state.totalTime} background="pink" />
+        <Header style={{ fontFamily: 'Visitor' }} title={"Time Left: " + this.state.totalTime} background="pink" />
         <Hint difficulty={this.props.difficulty}/>
       </View>
     );
