@@ -51,10 +51,6 @@ const styles = {
 }
 
 export default Main;
-
-// <View style={{ padding: 4}}>
-//   <Text style={{ fontSize: 38}}>PickerBox</Text>
-// </View>
 // 4C9FDA6D2EFDDAFE2749132426
 
 // 122134623
