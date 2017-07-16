@@ -37,3 +37,21 @@ export function storeNewGameDetails(user, difficulty) {
     payload: userObject
   }
 }
+
+export function storeFinishedGameResults(result) {
+  const records = realmDatabase.objects('Records');
+  realmDatabase.write(() => {
+    realmDatabase.create('Records',
+      {
+        datestamp: result.datestamp,
+        user: result.user,
+        difficulty: result.difficulty,
+        score: result.score,
+      }, true);
+  });
+  const userObject = records.filtered(`datestamp = "${result.datestamp}"`);
+  return {
+    type: types.UPDATE_GAME_DETAILS,
+    payload: userObject
+  }
+}

@@ -8,7 +8,7 @@ class Timer extends Component {
     super(props);
 
     this.state = {
-      totalTime: props.countdownTime
+      totalTime: props.countdownTime,
     }
   }
 
@@ -18,7 +18,7 @@ class Timer extends Component {
         this.setState({ totalTime: this.state.totalTime - 1 });
         if (this.state.totalTime <= 0) {
           this.stopTimer();
-          this.props.notifyCounterStop();
+          this.props.notifyGameTimeOut();
         }
       }, 1000)
     })

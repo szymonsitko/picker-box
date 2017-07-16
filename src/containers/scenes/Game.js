@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import {
   View,
   Dimensions,
+  Text
 } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import Boxes from '../../components/Boxes';
 import Timer from '../../components/Timer';
 import { scoreGenerator } from '../../lib/ScoreGenerator';
@@ -10,16 +12,30 @@ import { scoreGenerator } from '../../lib/ScoreGenerator';
 const { height, width } = Dimensions.get('window');
 
 class Game extends Component {
-  state = {
-    difficulty: 2
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      gameTime: scoreGenerator(this.props.user_object.difficulty),
+    }
   }
 
-  userWonGame() {
+  notifyUserScoredGame() {
     this.refs.child.stopTimer();
+    this.storeGameResult('won');
   }
 
-  userLostGame() {
-    alert("Lost!");
+  notifyGameTimeOut() {
+    this.storeGameResult('lost');
+  }
+
+  storeGameResult(finalResult) {
+    const statsString = `User ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime}`;
+    const result = { ...this.props.user_object, score: statsString };
+    this.props.storeFinishedGameResults(result);
+    setTimeout(function(){
+      Actions.result();
+    }, 1500);
   }
 
   render() {
@@ -27,11 +43,11 @@ class Game extends Component {
       <View style={styles.container}>
         <Timer
           ref="child"
-          countdownTime={scoreGenerator(this.state.difficulty)}
-          notifyCounterStop={this.userLostGame.bind(this)}
-          difficulty={this.state.difficulty}
+          notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
+          countdownTime={1}
+          difficulty={this.props.user_object.difficulty}
         />
-        <Boxes onUserScoredGame={this.userWonGame.bind(this)} difficulty={this.state.difficulty}/>
+        <Boxes { ...this.props } notifyUserScoredGame={this.notifyUserScoredGame.bind(this)} difficulty={this.state.difficulty}/>
       </View>
     )
   }

@@ -16,7 +16,7 @@ class Settings extends Component {
     this.state = {
       user: lastUser,
       difficulty: 0,
-      renderMessage: false
+      renderMessage: false,
     }
   }
 
@@ -24,17 +24,17 @@ class Settings extends Component {
     if (user.length > 0 && !user.includes('!') && !user.includes('"')) {
       this.setState({ renderMessage: false });
       this.props.storeNewGameDetails(user, difficulty);
+      Actions.game();
     } else {
       this.setState({ renderMessage: true });
     }
   }
 
   renderFormInvalidMessage() {
-    if (this.state.renderMessage || this.state.user.length < 1) {
+    if (this.state.renderMessage || (this.state.user.legth < 1)) {
       return <Text>Form canot be validated, double check game instructions!</Text>;
     }
   }
-
 
   render() {
     return (

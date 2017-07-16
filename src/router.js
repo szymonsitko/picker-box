@@ -4,6 +4,7 @@ import Main from './containers/scenes/Main';
 import GameWrapper from './containers/GameWrapper';
 import MainWrapper from './containers/MainWrapper';
 import SettingsWrapper from './containers/SettingsWrapper';
+import ResultWrapper from './containers/ResultWrapper';
 
 export const RouterComponent = () => {
   return (
@@ -12,6 +13,7 @@ export const RouterComponent = () => {
         <Scene initial key="welcome" component={MainWrapper} hideNavBar={true} />
         <Scene key="settings" component={SettingsWrapper} hideNavBar={true} />
         <Scene key="game" component={GameWrapper} hideNavBar={true} />
+        <Scene key="result" component={ResultWrapper} hideNavBar={true} />
       </Scene>
     </Router>
   );

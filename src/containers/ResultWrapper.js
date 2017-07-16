@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { ActionCreators } from '../actions';
-import Game from './scenes/Game';
+import Result from './scenes/Result';
 
-class GameWrapper extends Component {
+class ResultWrapper extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Game { ...this.props } />
+        <Result { ...this.props }/>
       </View>
     )
   }
@@ -22,11 +22,7 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
-function mapStateToProps({ records }) {
-  return records;
-}
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(GameWrapper);
+  (state) => { return {} },
+  mapDispatchToProps
+)(ResultWrapper);

@@ -14,9 +14,9 @@ class Boxes extends Component {
   state = {
     box1: { backgroundColor: 'pink' },
     box2: { backgroundColor: 'pink' },
-    box3: { backgroundColor: 'pink' },
 
     // TEMPORARY!!
+    box3: { backgroundColor: 'pink' },
     box4: { backgroundColor: 'pink' },
     box5: { backgroundColor: 'pink' },
     box6: { backgroundColor: 'pink' },
@@ -31,29 +31,19 @@ class Boxes extends Component {
   changeBoxColor(boxId) {
     let object = {};
     object[boxId] = { backgroundColor: getRandomColor(boxColorsGenerator(this.props.difficulty))};
-    this.setState(object);
-  }
-
-  shouldComponentUpdate(nextState) {
-    if (this.state !== nextState) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  componentDidUpdate() {
-    let counter = 0;
-    for (let key in this.state) {
-      const currentColor = this.state[key].backgroundColor;
-      const firstColor = Object.keys(this.state)[0];
-      if (currentColor == this.state[firstColor].backgroundColor) {
-        counter += 1;
+    this.setState(object, function() {
+      let counter = 0;
+      for (let key in this.state) {
+        const currentColor = this.state[key].backgroundColor;
+        const firstColor = Object.keys(this.state)[0];
+        if (currentColor == this.state[firstColor].backgroundColor) {
+          counter += 1;
+        }
       }
-    }
-    if (counter === Object.keys(this.state).length && Object.keys(this.state).length > 1) {
-      this.props.onUserScoredGame();
-    }
+      if (counter === Object.keys(this.state).length && Object.keys(this.state).length > 1) {
+        this.props.notifyUserScoredGame();
+      }
+    });
   }
 
   render() {
