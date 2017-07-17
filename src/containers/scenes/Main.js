@@ -5,6 +5,7 @@ import { Popup } from '../../components/Popup';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
 import { RecordsList } from '../../components/RecordsList';
+import { Info } from '../../components/Info';
 
 const { height, width } = Dimensions.get('window');
 
@@ -37,11 +38,14 @@ class Main extends Component {
         <Popup showModal={this.showInfoModal.bind(this)} modalVisible={this.state.infoModalVisible}>
 
           <Header style={{ fontFamily: 'Visitor' }} title="Info" background="#06939B"/>
+          <Info />
 
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
+
           <Header style={{ fontFamily: 'Visitor' }} title="Records" background="#ff1a1d"/>
           <RecordsList { ...this.props } />
+          
         </Popup>
       </View>
     )
@@ -63,7 +67,6 @@ const styles = {
     flex: 1,
     width: width,
     height: height,
-
   }
 }
 
