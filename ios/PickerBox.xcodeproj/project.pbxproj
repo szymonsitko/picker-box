@@ -39,6 +39,9 @@
 		CBE53FE32DC8453088ED3B35 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCA5216C9D94728B339C213 /* libc++.tbd */; };
 		93F9AA064EE14BC2BA2B8473 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF98A22D1C047DDBAE92763 /* libz.tbd */; };
 		57CA8220A75C4E47B1AC2EB4 /* Visitor.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6CB56D8A28EF423B9C218CFB /* Visitor.ttf */; };
+		40AFC15C058545A1BE980A38 /* Munro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1592E07CCCB549C48795F2CA /* Munro.ttf */; };
+		43D86E55448A403A98590F19 /* MunroNarrow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD76721E514A466FA9F184FC /* MunroNarrow.ttf */; };
+		2B6742F5FE2040A2BEEB01F3 /* MunroSmall.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480224869404C958459AE85 /* MunroSmall.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -263,6 +266,9 @@
 		4BCA5216C9D94728B339C213 /* libc++.tbd */ = {isa = PBXFileReference; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		FCF98A22D1C047DDBAE92763 /* libz.tbd */ = {isa = PBXFileReference; name = "libz.tbd"; path = "usr/lib/libz.tbd"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = sourcecode.text-based-dylib-definition; explicitFileType = undefined; includeInIndex = 0; };
 		6CB56D8A28EF423B9C218CFB /* Visitor.ttf */ = {isa = PBXFileReference; name = "Visitor.ttf"; path = "../assets/fonts/Visitor.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1592E07CCCB549C48795F2CA /* Munro.ttf */ = {isa = PBXFileReference; name = "Munro.ttf"; path = "../assets/fonts/Munro.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		BD76721E514A466FA9F184FC /* MunroNarrow.ttf */ = {isa = PBXFileReference; name = "MunroNarrow.ttf"; path = "../assets/fonts/MunroNarrow.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1480224869404C958459AE85 /* MunroSmall.ttf */ = {isa = PBXFileReference; name = "MunroSmall.ttf"; path = "../assets/fonts/MunroSmall.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -511,6 +517,9 @@
 			isa = "PBXGroup";
 			children = (
 				6CB56D8A28EF423B9C218CFB /* Visitor.ttf */,
+				1592E07CCCB549C48795F2CA /* Munro.ttf */,
+				BD76721E514A466FA9F184FC /* MunroNarrow.ttf */,
+				1480224869404C958459AE85 /* MunroSmall.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -875,6 +884,9 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				57CA8220A75C4E47B1AC2EB4 /* Visitor.ttf in Resources */,
+				40AFC15C058545A1BE980A38 /* Munro.ttf in Resources */,
+				43D86E55448A403A98590F19 /* MunroNarrow.ttf in Resources */,
+				2B6742F5FE2040A2BEEB01F3 /* MunroSmall.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

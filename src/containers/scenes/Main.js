@@ -4,6 +4,7 @@ import { Actions } from 'react-native-router-flux';
 import { Popup } from '../../components/Popup';
 import { Button } from '../../components/Button';
 import { Header } from '../../components/Header';
+import { RecordsList } from '../../components/RecordsList';
 
 const { height, width } = Dimensions.get('window');
 
@@ -40,6 +41,7 @@ class Main extends Component {
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
           <Header style={{ fontFamily: 'Visitor' }} title="Records" background="#ff1a1d"/>
+          <RecordsList { ...this.props } />
         </Popup>
       </View>
     )
@@ -66,6 +68,3 @@ const styles = {
 }
 
 export default Main;
-// 4C9FDA6D2EFDDAFE2749132426
-
-// 122134623

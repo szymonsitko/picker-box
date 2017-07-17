@@ -26,7 +26,11 @@ function mapDispatchToProps(dispatch) {
   );
 }
 
+function mapStateToProps({ records }) {
+  return records;
+}
+
 export default connect(
-  (state) => { return {} },
+  mapStateToProps,
   mapDispatchToProps
 )(MainWrapper);
