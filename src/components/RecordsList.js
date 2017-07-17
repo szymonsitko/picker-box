@@ -51,9 +51,9 @@ export class RecordsList extends Component {
         <Text style={styles.rowHeader}>User: {rowData.user}</Text>
         <Text style={styles.rowTextStyle}>Level: {difficultyString}</Text>
         <Text style={styles.rowDataText}>{formattedDate}</Text>
-        <Text style={{ fontFamily: 'Munro', marginLeft: 12, fontSize: 16 }}>{scoreArray[1]} seconds</Text>
-        <Text style={{ fontFamily: 'Munro', marginLeft: 12, fontSize: 16  }}>{scoreArray[3]} seconds</Text>
-        <Text style={{ fontFamily: 'Munro', marginLeft: 12, fontSize: 16  }}>{scoreArray[2]} seconds</Text>
+        <Text style={styles.recordsText}>{scoreArray[1]} seconds</Text>
+        <Text style={styles.recordsText}>{scoreArray[3]} seconds</Text>
+        <Text style={[styles.recordsText, { marginBottom: 2 }]}>{scoreArray[2]} seconds</Text>
       </View>
     );
   }
@@ -61,18 +61,18 @@ export class RecordsList extends Component {
   render() {
     return (
       <View >
-        <Image source={require('../../assets/drawable/background.png')} style={{ opacity: .5, width: width * 1.25, height: height * 1.25 }} />
+        <Image source={require('../../assets/drawable/background.png')} style={{ opacity: .65, width: width * 1.25, height: height * 1.25 }} />
         <View style={{ position: 'absolute', width: width }}>
           <TouchableOpacity onPress={() => this.reverseListOrder()}>
-            <Text style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', padding: 8, fontFamily: 'Visitor', fontSize: 22 }}>Sorting: {this.state.reversed ? 'Newest to Oldest' : 'Oldest to Newest'}</Text>
+            <Text style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', padding: 12, fontFamily: 'Visitor', fontSize: 24 }}>Sorting: {this.state.reversed ? 'Newest to Oldest' : 'Oldest to Newest'}</Text>
           </TouchableOpacity>
-          <ScrollView style={{ height: height * .75 }}>
+          <ScrollView style={{ height: height * .785 }}>
             <ListView
+              style={{ backgroundColor: 'rgba(0,0,0,0.15)'}}
               dataSource={this.state.dataSource}
               renderRow={(rowData) => this.renderRow(rowData)}
             />
           </ScrollView>
-          <View style={{ backgroundColor: 'rgba(0,0,0,0.75)', height: height * .25 }} />
         </View>
       </View>
     );
@@ -82,13 +82,13 @@ export class RecordsList extends Component {
 const styles = {
   rowTextStyle: {
     marginLeft: 12,
-    fontSize: 22,
+    fontSize: 28,
     color: 'black',
     fontFamily: 'MunroSmall'
   },
   rowHeader: {
     padding: 4,
-    fontSize: 26,
+    fontSize: 32,
     color: 'black',
     fontFamily: 'MunroSmall'
   },
@@ -103,6 +103,12 @@ const styles = {
     width: width,
     height: height,
     opacity: .5
+  },
+  recordsText: {
+    fontFamily: 'Munro',
+    marginLeft: 12,
+    fontSize: 20,
+    color: 'white'
   }
 }
 

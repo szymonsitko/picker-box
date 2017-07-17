@@ -10,12 +10,12 @@ export const Info = () => {
       <ScrollView>
         <Image source={require('../../assets/drawable/background.png')} style={{ opacity: .5, width: width * 1.25, height: height * 1.25 }} />
         <View style={{ position: 'absolute', padding: 8 }}>
-          <Text style={[styles.headerStyle, { marginTop: 8} ]}>Instructions</Text>
+          <Text style={styles.headerStyle}>Instructions</Text>
           <Text style={styles.instructions}>{constants.GAME_INSTRUCTIONS}</Text>
           <Text style={styles.headerStyle}>Credits</Text>
           <Text style={styles.instructions}>{constants.GAME_CREDITS}</Text>
           <TouchableOpacity onPress={() => Linking.openURL(constants.URL).catch(err => console.error('Cannot open browser!', err))}>
-            <Text style={[styles.headerStyle, { textAlign: 'center', marginTop: 8 } ]}>Visit Webpage</Text>
+            <Text style={[styles.headerStyle, { textAlign: 'center'} ]}>Visit Webpage</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
