@@ -26,7 +26,7 @@ class Main extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image source={require('../../../assets/drawable/background_box.png')} style={styles.backgroundImage} />
+        <Image source={require('../../../assets/drawable/background_main.png')} style={styles.backgroundImage} />
         <View style={{ position: 'absolute', marginLeft: 12, alignItems: 'center'}}>
           <Text style={{ color: 'white', fontFamily: 'Visitor', fontSize: 88, textAlign: 'center'}}>PickerBox</Text>
         </View>
@@ -45,7 +45,7 @@ class Main extends Component {
 
           <Header style={{ fontFamily: 'Visitor' }} title="Records" background="#ff1a1d"/>
           <RecordsList { ...this.props } />
-          
+
         </Popup>
       </View>
     )
@@ -67,6 +67,7 @@ const styles = {
     flex: 1,
     width: width,
     height: height,
+    opacity: .85
   }
 }
 

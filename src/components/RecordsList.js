@@ -18,7 +18,7 @@ export class RecordsList extends Component {
 
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records)),
+      dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records).reverse()),
       reversed: false
     };
   }
@@ -27,14 +27,14 @@ export class RecordsList extends Component {
     if (!this.state.reversed) {
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.setState({
-        dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records).reverse()),
+        dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records)),
         reversed: true,
       });
     }
     if (this.state.reversed) {
       const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
       this.setState({
-        dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records)),
+        dataSource: ds.cloneWithRows(generateRecordsListData(this.props.all_records).reverse()),
         reversed: false
       });
     }
@@ -61,10 +61,10 @@ export class RecordsList extends Component {
   render() {
     return (
       <View >
-        <Image source={require('../../assets/drawable/background.png')} style={{ opacity: .65, width: width * 1.25, height: height * 1.25 }} />
+        <Image source={require('../../assets/drawable/background.png')} style={{ opacity: .5, width: width * 1.25, height: height * 1.25 }} />
         <View style={{ position: 'absolute', width: width }}>
           <TouchableOpacity onPress={() => this.reverseListOrder()}>
-            <Text style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', padding: 12, fontFamily: 'Visitor', fontSize: 24 }}>Sorting: {this.state.reversed ? 'Newest to Oldest' : 'Oldest to Newest'}</Text>
+            <Text style={{ backgroundColor: 'rgba(0,0,0,0.5)', color: 'white', padding: 12, fontFamily: 'Visitor', fontSize: 24 }}>Sorting: {this.state.reversed ? 'Oldest to Newest' : 'Newest to Oldest'}</Text>
           </TouchableOpacity>
           <ScrollView style={{ height: height * .785 }}>
             <ListView
