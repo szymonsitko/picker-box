@@ -48,14 +48,14 @@ const styles = {
     fontSize: 28,
     fontFamily: 'Visitor',
     textAlign: 'left',
-    color: '#660066'
+    color: 'rgba(0,0,0,0.5)'
   },
   taps: {
     padding: 4,
     fontSize: 28,
     fontFamily: 'Visitor',
     textAlign: 'left',
-    color: '#660066'
+    color: 'rgba(0,0,0,0.5)'
   }
 }
 

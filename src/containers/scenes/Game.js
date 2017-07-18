@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {
   View,
   Dimensions,
-  Text
+  Text,
+  Image
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Boxes from '../../components/Boxes';
@@ -51,19 +52,22 @@ class Game extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Timer
-          ref="child"
-          notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
-          tapCount={this.state.tapCount}
-          countdownTime={this.state.gameTime}
-          difficulty={this.props.user_object.difficulty}
-        />
-        <Boxes
-          { ...this.props }
-          incrementTapCount={this.incrementTapCount.bind(this)}
-          notifyUserScoredGame={this.notifyUserScoredGame.bind(this)}
-          difficulty={this.state.difficulty}
-        />
+        <Image source={require('../../../assets/drawable/background_game.png')} style={styles.backgroundImage} />
+        <View style={{ position: 'absolute' }}>
+          <Timer
+            ref="child"
+            notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
+            tapCount={this.state.tapCount}
+            countdownTime={this.state.gameTime}
+            difficulty={this.props.user_object.difficulty}
+          />
+          <Boxes
+            { ...this.props }
+            incrementTapCount={this.incrementTapCount.bind(this)}
+            notifyUserScoredGame={this.notifyUserScoredGame.bind(this)}
+            difficulty={this.state.difficulty}
+          />
+        </View>
       </View>
     )
   }
@@ -73,6 +77,11 @@ const styles = {
   container: {
     flex: 1,
   },
+  backgroundImage: {
+    width: width,
+    height: height,
+    opacity: .65
+  }
 }
 
 export default Game;
