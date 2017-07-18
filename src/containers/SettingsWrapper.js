@@ -12,8 +12,10 @@ class SettingsWrapper extends Component {
   this.navigator = null;
 
   this._handleBack = (() => {
-    Actions.welcome();
-    return true;
+    if (this.props.navigation.state.routeName === 'settings') {
+      Actions.welcome();
+      return true;
+      }
     })
   .bind(this);
   }
@@ -25,11 +27,6 @@ class SettingsWrapper extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this._handleBack);
-  }
-
-  _actionOnBackButtonPress() {
-    Actions.welcome();
-    return true;
   }
 
   render() {
