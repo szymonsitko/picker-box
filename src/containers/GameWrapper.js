@@ -12,6 +12,7 @@ class GameWrapper extends Component {
   this.navigator = null;
 
   this._handleBackButtonPress = this._handleBackButtonPress.bind(this);
+  this.state = { forceTimerStop: false }
   }
 
   componentWillMount() {
@@ -24,15 +25,11 @@ class GameWrapper extends Component {
 
   _handleBackButtonPress() {
     if (this.props.navigation.state.routeName === 'game') {
-      // Here, 1) clear current props on reducers level,
-      this.props.clearReducerData();
-      // 2) delete last database entry,
-
-      //3) go to main
-
-
-
-      ToastAndroid.show('You cannot go back while playing!', ToastAndroid.SHORT);
+      this.props.deleteDatabaseRecord(this.props.user_object);
+      this.setState({ forceTimerStop: true }, () => {
+        this.refs.child.notifyTimerStop();
+        Actions.welcome();
+      })
       return true;
     }
   }
@@ -40,7 +37,7 @@ class GameWrapper extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Game { ...this.props } />
+        <Game ref="child" { ...this.props } />
       </View>
     )
   }

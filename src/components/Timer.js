@@ -28,6 +28,14 @@ class Timer extends Component {
     clearInterval(this.state.timer);
   }
 
+  componentWillReceiveProps() {
+    console.log(this.props.notifyTimerStop)
+    if (this.props.notifyTimerStop) {
+
+      this.stopTimer();
+    }
+  }
+
   render() {
     return (
       <View>

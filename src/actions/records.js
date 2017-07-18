@@ -5,7 +5,7 @@ export function initializeDatabaseConnection(schema) {
   const records = realmDatabase.objects('Records');
 
   // Debugging
-  console.log("All database entries: ", records);
+  // console.log("All database entries: ", records);
 
   // Init some dummy user
   // realmDatabase.write(() => {
@@ -59,5 +59,16 @@ export function storeFinishedGameResults(result) {
 export function clearReducerData() {
   return {
     type: types.CLEAR_USER_DATA
+  }
+}
+
+export function deleteDatabaseRecord({ datestamp }) {
+  const records = realmDatabase.objects('Records');
+  realmDatabase.write(() => {
+    const entryToDelete = records.filtered(`datestamp = "${datestamp}"`);
+    realmDatabase.delete(entryToDelete[0]);
+  });
+  return {
+    type: types.DELETE_LAST_GAME_ENTRY
   }
 }

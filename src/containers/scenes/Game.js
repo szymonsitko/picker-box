@@ -17,6 +17,7 @@ class Game extends Component {
 
     this.state = {
       gameTime: scoreGenerator(this.props.user_object.difficulty),
+      forceTimerStop: this.props.forceTimerStop,
     }
   }
 
@@ -27,6 +28,10 @@ class Game extends Component {
 
   notifyGameTimeOut() {
     this.storeGameResult('lost');
+  }
+
+  notifyTimerStop() {
+    this.refs.child.stopTimer();
   }
 
   storeGameResult(finalResult) {
@@ -44,6 +49,7 @@ class Game extends Component {
         <Timer
           ref="child"
           notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
+          notifyTimerStop={this.state.forceTimerStop}
           countdownTime={this.state.gameTime}
           difficulty={this.props.user_object.difficulty}
         />
