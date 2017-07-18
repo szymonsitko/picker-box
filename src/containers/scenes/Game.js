@@ -19,8 +19,24 @@ class Game extends Component {
     this.state = {
       gameTime: scoreGenerator(this.props.user_object.difficulty),
       forceTimerStop: this.props.forceTimerStop,
-      tapCount: 0
+      tapCount: 0,
+      preCounter: 3,
+      gameHasStarted: false
     }
+  }
+
+  componentDidMount() {
+    let countLimit = 3;
+    let initialMessage = setInterval(() => {
+      countLimit -= 1;
+      this.setState({ preCounter: this.state.preCounter - 1 });
+      if (countLimit === 0) {
+        this.setState({
+          gameHasStarted: true
+        });
+        clearInterval(initialMessage);
+      }
+    }, 1250);
   }
 
   notifyUserScoredGame() {
@@ -49,7 +65,7 @@ class Game extends Component {
     }, 1500);
   }
 
-  render() {
+  renderMainPlayground() {
     return (
       <View style={styles.container}>
         <Image source={require('../../../assets/drawable/background_game.png')} style={styles.backgroundImage} />
@@ -69,6 +85,21 @@ class Game extends Component {
           />
         </View>
       </View>
+    );
+  }
+
+  renderPreGameCounter() {
+    return (
+      <View style={styles.preCounterContainer}>
+        <Text style={styles.preCounterMessage}>Take a seat, prepare yourself..</Text>
+        <Text style={styles.preCounter}>{this.state.preCounter}</Text>
+      </View>
+    );
+  }
+
+  render() {
+    return (
+      !this.state.gameHasStarted ? this.renderPreGameCounter() : this.renderMainPlayground()
     )
   }
 }
@@ -81,6 +112,21 @@ const styles = {
     width: width,
     height: height,
     opacity: .65
+  },
+  preCounterContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  preCounterMessage: {
+    fontSize: 32,
+    fontFamily: 'Visitor',
+    textAlign: 'center'
+  },
+  preCounter: {
+    fontSize: 72,
+    padding: 8,
+    fontFamily: 'Visitor'
   }
 }
 
