@@ -55,3 +55,9 @@ export function storeFinishedGameResults(result) {
     payload: userObject
   }
 }
+
+export function clearReducerData() {
+  return {
+    type: types.CLEAR_USER_DATA
+  }
+}

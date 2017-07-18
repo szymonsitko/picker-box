@@ -10,6 +10,8 @@ export default (state = INITIAL_STATE, action) => {
     case types.STORE_GAME_DETAILS:
     case types.UPDATE_GAME_DETAILS:
       return { ...state, user_object: action.payload };
+    case types.CLEAR_USER_DATA:
+      return { ...state, user_object: {} };
     default:
       return state;
   }

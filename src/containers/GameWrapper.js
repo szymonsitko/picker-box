@@ -24,7 +24,14 @@ class GameWrapper extends Component {
 
   _handleBackButtonPress() {
     if (this.props.navigation.state.routeName === 'game') {
-      // Here, 1) clear current props on reducers level, 2) delete last database entry, 3) go to main
+      // Here, 1) clear current props on reducers level,
+      this.props.clearReducerData();
+      // 2) delete last database entry,
+
+      //3) go to main
+
+
+
       ToastAndroid.show('You cannot go back while playing!', ToastAndroid.SHORT);
       return true;
     }
