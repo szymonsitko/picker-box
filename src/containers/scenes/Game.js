@@ -18,6 +18,7 @@ class Game extends Component {
     this.state = {
       gameTime: scoreGenerator(this.props.user_object.difficulty),
       forceTimerStop: this.props.forceTimerStop,
+      tapCount: 0
     }
   }
 
@@ -32,6 +33,10 @@ class Game extends Component {
 
   notifyTimerStop() {
     this.refs.child.stopTimer();
+  }
+
+  incrementTapCount() {
+    this.setState({ tapCount: this.state.tapCount += 1 });
   }
 
   storeGameResult(finalResult) {
@@ -49,11 +54,16 @@ class Game extends Component {
         <Timer
           ref="child"
           notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
-          notifyTimerStop={this.state.forceTimerStop}
+          tapCount={this.state.tapCount}
           countdownTime={this.state.gameTime}
           difficulty={this.props.user_object.difficulty}
         />
-        <Boxes { ...this.props } notifyUserScoredGame={this.notifyUserScoredGame.bind(this)} difficulty={this.state.difficulty}/>
+        <Boxes
+          { ...this.props }
+          incrementTapCount={this.incrementTapCount.bind(this)}
+          notifyUserScoredGame={this.notifyUserScoredGame.bind(this)}
+          difficulty={this.state.difficulty}
+        />
       </View>
     )
   }

@@ -24,16 +24,9 @@ export class Hint extends Component {
   render() {
     return (
       <View>
-        <Text style={styles.hint}>Difficulty: {this.getLevel()}</Text>
+        <Text style={this.props.style.taps}>Tapped {this.props.tapCount} times</Text>
+        <Text style={this.props.style.counter}>Difficulty: {this.getLevel()}</Text>
       </View>
     )
   }
-}
-
-const styles = {
-  hint: {
-    padding: 8,
-    fontSize: 18,
-    textAlign: 'right',
-  },
 }

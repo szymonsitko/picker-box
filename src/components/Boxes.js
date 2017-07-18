@@ -32,6 +32,7 @@ class Boxes extends Component {
     let object = {};
     object[boxId] = { backgroundColor: getRandomColor(boxColorsGenerator(this.props.difficulty))};
     this.setState(object, function() {
+      this.props.incrementTapCount();
       let counter = 0;
       for (let key in this.state) {
         const currentColor = this.state[key].backgroundColor;

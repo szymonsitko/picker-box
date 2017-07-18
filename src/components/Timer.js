@@ -28,21 +28,34 @@ class Timer extends Component {
     clearInterval(this.state.timer);
   }
 
-  componentWillReceiveProps() {
-    console.log(this.props.notifyTimerStop)
-    if (this.props.notifyTimerStop) {
-
-      this.stopTimer();
-    }
-  }
-
   render() {
     return (
       <View>
         <Header style={{ fontFamily: 'Visitor' }} title={"Time Left: " + this.state.totalTime} background="pink" />
-        <Hint difficulty={this.props.difficulty}/>
+        <Hint
+          tapCount={this.props.tapCount}
+          style={styles}
+          difficulty={this.props.difficulty}
+        />
       </View>
     );
+  }
+}
+
+const styles = {
+  counter: {
+    padding: 4,
+    fontSize: 28,
+    fontFamily: 'Visitor',
+    textAlign: 'left',
+    color: '#660066'
+  },
+  taps: {
+    padding: 4,
+    fontSize: 28,
+    fontFamily: 'Visitor',
+    textAlign: 'left',
+    color: '#660066'
   }
 }
 
