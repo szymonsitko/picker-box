@@ -89,17 +89,17 @@ class Settings extends Component {
             <Button
               title="Easy"
               onPress={() => this.setState({ difficulty: 0 })}
-              style={styles.buttonText}
+              style={[styles.buttonText, this.state.difficulty === 0 ? { color: 'coral'} : {} ]}
             />
             <Button
               title="Medium"
               onPress={() => this.setState({ difficulty: 1 })}
-              style={styles.buttonText}
+              style={[styles.buttonText, this.state.difficulty === 1 ? { color: 'coral'} : {} ]}
             />
             <Button
               title="Hard"
               onPress={() => this.setState({ difficulty: 2, chosen: { color: 'coral' } })}
-              style={styles.buttonText}
+              style={[styles.buttonText, this.state.difficulty === 2 ? { color: 'coral'} : {} ]}
             />
           </View>
         </View>

@@ -7,11 +7,29 @@ import { ActionCreators } from '../actions';
 import Settings from './scenes/Settings';
 
 class SettingsWrapper extends Component {
-  componentDidMount() {
-    BackHandler.addEventListener('hardwareBackPress', function() {
-      Actions.welcome();
-      return true;
-    });
+  constructor(props) {
+  super(props);
+  this.navigator = null;
+
+  this._handleBack = (() => {
+    Actions.welcome();
+    return true;
+    })
+  .bind(this);
+  }
+
+
+  componentWillMount() {
+    BackHandler.addEventListener('hardwareBackPress', this._handleBack);
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBack);
+  }
+
+  _actionOnBackButtonPress() {
+    Actions.welcome();
+    return true;
   }
 
   render() {
