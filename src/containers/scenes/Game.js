@@ -62,7 +62,8 @@ class Game extends Component {
   }
 
   storeGameResult(finalResult) {
-    const statsString = `User ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime}`;
+    const statsString = `Player ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime}`;
+    const evaluatedTapCount = finalResult === 'won' ? this.state.tapCount : 0;
     const result = {
       ...this.props.user_object,
       result: statsString,
@@ -70,7 +71,7 @@ class Game extends Component {
         this.state.gameTime,
         this.refs.child.state.totalTime,
         this.props.user_object.difficulty,
-        this.state.tapCount
+        evaluatedTapCount
       )
     };
     if (finalResult === 'won') {
@@ -94,7 +95,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={this.state.gameTime}
+            countdownTime={1}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes
