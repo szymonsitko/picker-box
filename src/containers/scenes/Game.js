@@ -69,7 +69,8 @@ class Game extends Component {
       score: scoreCalculator(
         this.state.gameTime,
         this.refs.child.state.totalTime,
-        this.state.difficulty
+        this.state.difficulty,
+        this.state.tapCount
       )
     };
     this.props.storeFinishedGameResults(result);
@@ -88,7 +89,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={2}
+            countdownTime={this.state.gameTime}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes
