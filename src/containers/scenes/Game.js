@@ -3,7 +3,8 @@ import {
   View,
   Dimensions,
   Text,
-  Image
+  Image,
+  Modal
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import Boxes from '../../components/Boxes';
@@ -60,8 +61,9 @@ class Game extends Component {
     const result = { ...this.props.user_object, score: statsString };
     this.props.storeFinishedGameResults(result);
     setTimeout(function(){
+      this.setState({ showEndGamePopup: false });
       Actions.result();
-    }, 2500);
+    }.bind(this), 2500);
   }
 
   renderMainPlayground() {
@@ -73,7 +75,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={100}
+            countdownTime={2}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes
@@ -97,12 +99,23 @@ class Game extends Component {
   }
 
   renderPostGamePopup() {
-    return (
-      <View style={styles.nonGameContainer}>
-        <Text style={styles.nonGameMessage}>Moving into result screen...</Text>
-        <Text style={styles.nonGameBoldLabel}>!</Text>
-      </View>
-    );
+    if (this.state.showEndGamePopup) {
+      return (
+        <View>
+          <Modal
+            animationType={"slide"}
+            transparent={true}
+            visible={this.state.showEndGamePopup}
+            onRequestClose={() => {console.log("Modal cannot be closed.!")}}
+          >
+            <View style={styles.nonGameContainer}>
+              <Text style={styles.nonGameMessage}>Moving into result screen...</Text>
+              <Text style={styles.nonGameBoldLabel}>!</Text>
+            </View>
+          </Modal>
+        </View>
+      );
+    }
   }
 
   renderGameContent() {
@@ -115,7 +128,10 @@ class Game extends Component {
 
   render() {
     return (
-      !this.state.gameHasStarted ? this.renderPreGameCounter() : this.renderGameContent()
+      <View style={{ flex: 1 }}>
+        {!this.state.gameHasStarted ? this.renderPreGameCounter() : this.renderMainPlayground()}
+        {this.renderPostGamePopup()}
+      </View>
     );
   }
 }
