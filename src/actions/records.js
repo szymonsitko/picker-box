@@ -5,7 +5,7 @@ export function initializeDatabaseConnection(schema) {
   const records = realmDatabase.objects('Records');
 
   // Debugging
-  // console.log("All database entries: ", records);
+  console.log("All database entries: ", records);
 
   // Init some dummy user
   // realmDatabase.write(() => {
@@ -46,7 +46,8 @@ export function storeFinishedGameResults(result) {
         datestamp: result.datestamp,
         user: result.user,
         difficulty: result.difficulty,
-        score: result.score,
+        result: result.result,
+        score: result.score
       }, true);
   });
   const userObject = records.filtered(`datestamp = "${result.datestamp}"`);

@@ -10,6 +10,7 @@ import { Actions } from 'react-native-router-flux';
 import Boxes from '../../components/Boxes';
 import Timer from '../../components/Timer';
 import { scoreGenerator } from '../../lib/ScoreGenerator';
+import { scoreCalculator } from '../../lib/ScoreCalculator';
 
 const { height, width } = Dimensions.get('window');
 
@@ -52,13 +53,25 @@ class Game extends Component {
     this.storeGameResult('lost');
   }
 
+  notifyTimerStop() {
+    this.refs.child.stopTimer();
+  }
+
   incrementTapCount() {
-    this.setState({ tapCount: this.state.tapCount += 1 });
+    this.setState({ tapCount: this.state.tapCount + 1 });
   }
 
   storeGameResult(finalResult) {
     const statsString = `User ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime}`;
-    const result = { ...this.props.user_object, score: statsString };
+    const result = {
+      ...this.props.user_object,
+      result: statsString,
+      score: scoreCalculator(
+        this.state.gameTime,
+        this.refs.child.state.totalTime,
+        this.state.difficulty
+      )
+    };
     this.props.storeFinishedGameResults(result);
     setTimeout(function(){
       this.setState({ showEndGamePopup: false });

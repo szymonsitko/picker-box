@@ -25,12 +25,16 @@ class GameWrapper extends Component {
 
   _handleBackButtonPress() {
     if (this.props.navigation.state.routeName === 'game') {
-      this.props.deleteDatabaseRecord(this.props.user_object);
-      this.setState({ forceTimerStop: true }, () => {
-        this.refs.child.notifyTimerStop();
-        Actions.welcome();
-      })
-      return true;
+      if (!this.refs.child.state.gameHasStarted) {
+        return true;
+      } else {
+        this.props.deleteDatabaseRecord(this.props.user_object);
+        this.setState({ forceTimerStop: true }, () => {
+          this.refs.child.notifyTimerStop();
+          Actions.welcome();
+        })
+        return true;
+      }
     }
   }
 

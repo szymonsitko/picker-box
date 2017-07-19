@@ -9,7 +9,8 @@ export const createDatabaseSchema = () => {
         datestamp: 'int',
         user: 'string',
         difficulty: 'int',
-        score: {type: 'string', default: ''}
+        result: {type: 'string', default: ''},
+        score: {type: 'int', default: 0}
     },
   };
   return Records.schema;
