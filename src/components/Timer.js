@@ -9,6 +9,7 @@ class Timer extends Component {
 
     this.state = {
       totalTime: props.countdownTime,
+      timerHasStopped: false
     }
   }
 
@@ -26,17 +27,38 @@ class Timer extends Component {
 
   stopTimer() {
     clearInterval(this.state.timer);
+    this.setState({ timerHasStopped: true });
+  }
+
+  renderTimerIsRunning() {
+    return (
+      <View>
+        <Hint
+          tapCount={"Tapped " + this.props.tapCount + " times"}
+          style={styles}
+          difficulty={this.props.difficulty}
+        />
+      </View>
+    )
+  }
+
+  renderTimerHasStopped() {
+    return (
+      <View>
+        <Hint
+          tapCount={"Moving into result screen..."}
+          style={styles}
+          difficulty={this.props.difficulty}
+        />
+      </View>
+    )
   }
 
   render() {
     return (
       <View>
         <Header style={{ fontFamily: 'Visitor' }} title={"Time Left: " + this.state.totalTime} background="pink" />
-        <Hint
-          tapCount={this.props.tapCount}
-          style={styles}
-          difficulty={this.props.difficulty}
-        />
+        {!this.state.timerHasStopped ? this.renderTimerIsRunning() : this.renderTimerHasStopped()}
       </View>
     );
   }

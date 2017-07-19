@@ -21,7 +21,8 @@ class Game extends Component {
       forceTimerStop: this.props.forceTimerStop,
       tapCount: 0,
       preCounter: 3,
-      gameHasStarted: false
+      gameHasStarted: false,
+      showEndGamePopup: false
     }
   }
 
@@ -41,15 +42,13 @@ class Game extends Component {
 
   notifyUserScoredGame() {
     this.refs.child.stopTimer();
+    this.setState({ showEndGamePopup: true });
     this.storeGameResult('won');
   }
 
   notifyGameTimeOut() {
+    this.setState({ showEndGamePopup: true });
     this.storeGameResult('lost');
-  }
-
-  notifyTimerStop() {
-    this.refs.child.stopTimer();
   }
 
   incrementTapCount() {
@@ -62,7 +61,7 @@ class Game extends Component {
     this.props.storeFinishedGameResults(result);
     setTimeout(function(){
       Actions.result();
-    }, 1500);
+    }, 2500);
   }
 
   renderMainPlayground() {
@@ -74,7 +73,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={this.state.gameTime}
+            countdownTime={100}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes
@@ -90,17 +89,34 @@ class Game extends Component {
 
   renderPreGameCounter() {
     return (
-      <View style={styles.preCounterContainer}>
-        <Text style={styles.preCounterMessage}>Take a seat, prepare yourself..</Text>
-        <Text style={styles.preCounter}>{this.state.preCounter}</Text>
+      <View style={styles.nonGameContainer}>
+        <Text style={styles.nonGameMessage}>Take a seat, prepare yourself..</Text>
+        <Text style={styles.nonGameBoldLabel}>{this.state.preCounter}</Text>
       </View>
     );
   }
 
+  renderPostGamePopup() {
+    return (
+      <View style={styles.nonGameContainer}>
+        <Text style={styles.nonGameMessage}>Moving into result screen...</Text>
+        <Text style={styles.nonGameBoldLabel}>!</Text>
+      </View>
+    );
+  }
+
+  renderGameContent() {
+    if (!this.state.showEndGamePopup) {
+      return this.renderMainPlayground();
+    } else {
+      return this.renderPostGamePopup();
+    }
+  }
+
   render() {
     return (
-      !this.state.gameHasStarted ? this.renderPreGameCounter() : this.renderMainPlayground()
-    )
+      !this.state.gameHasStarted ? this.renderPreGameCounter() : this.renderGameContent()
+    );
   }
 }
 
@@ -113,20 +129,23 @@ const styles = {
     height: height,
     opacity: .65
   },
-  preCounterContainer: {
+  nonGameContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'rgba(155, 48, 74, .7)',
   },
-  preCounterMessage: {
+  nonGameMessage: {
     fontSize: 32,
     fontFamily: 'Visitor',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
-  preCounter: {
+  nonGameBoldLabel: {
     fontSize: 72,
     padding: 8,
-    fontFamily: 'Visitor'
+    fontFamily: 'Visitor',
+    color: 'white'
   }
 }
 

@@ -6,12 +6,13 @@ export class Hint extends Component {
     super(props);
 
     this.state = {
-      difficulty: props.countdownTime
+      difficulty: props.countdownTime,
+      level: props.difficulty
     }
   }
 
   getLevel() {
-    switch (this.props.difficulty) {
+    switch (this.state.level) {
       case 0:
         return 'Easy';
       case 1:
@@ -24,8 +25,8 @@ export class Hint extends Component {
   render() {
     return (
       <View>
-        <Text style={this.props.style.taps}>Tapped {this.props.tapCount} times</Text>
-        <Text style={this.props.style.counter}>Difficulty: {this.getLevel()}</Text>
+        <Text style={this.props.style.taps}>{this.props.tapCount}</Text>
+        <Text style={this.props.style.counter}>{this.getLevel()}</Text>
       </View>
     )
   }
