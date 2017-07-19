@@ -69,11 +69,16 @@ class Game extends Component {
       score: scoreCalculator(
         this.state.gameTime,
         this.refs.child.state.totalTime,
-        this.state.difficulty,
+        this.props.user_object.difficulty,
         this.state.tapCount
       )
     };
-    this.props.storeFinishedGameResults(result);
+    if (finalResult === 'won') {
+      this.props.storeFinishedGameResults(result);
+    }
+    if (finalResult === 'lost') {
+      this.props.storeFinishedGameResultsOnReducer(result);
+    }
     setTimeout(function(){
       this.setState({ showEndGamePopup: false });
       Actions.result();

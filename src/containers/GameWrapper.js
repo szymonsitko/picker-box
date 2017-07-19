@@ -8,11 +8,11 @@ import Game from './scenes/Game';
 
 class GameWrapper extends Component {
   constructor(props) {
-  super(props);
-  this.navigator = null;
+    super(props);
+    this.navigator = null;
 
-  this._handleBackButtonPress = this._handleBackButtonPress.bind(this);
-  this.state = { forceTimerStop: false }
+    this._handleBackButtonPress = this._handleBackButtonPress.bind(this);
+    this.state = { forceTimerStop: false }
   }
 
   componentWillMount() {
@@ -28,7 +28,6 @@ class GameWrapper extends Component {
       if (!this.refs.child.state.gameHasStarted) {
         return true;
       } else {
-        this.props.deleteDatabaseRecord(this.props.user_object);
         this.setState({ forceTimerStop: true }, () => {
           this.refs.child.notifyTimerStop();
           Actions.welcome();

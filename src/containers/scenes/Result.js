@@ -3,15 +3,20 @@ import { View, Text } from 'react-native';
 import { Header } from '../../components/Header';
 
 class Result extends Component {
+  componentDidMount() {
+    console.log("component mounted", this.props.userResult)
+  }
+
   render() {
     return (
       <View>
         <Header style={{ fontFamily: 'Visitor' }} title="Result" background="#B54F79" />
         <View>
-          <Text>{this.props.user_object[0].user}</Text>
-          <Text>{Date(this.props.user_object[0].datestamp)}</Text>
-          <Text>{this.props.user_object[0].difficulty}</Text>
-          <Text>{this.props.user_object[0].score}</Text>
+          <Text>{this.props.userResult.user}</Text>
+          <Text>{Date(this.props.userResult.datestamp)}</Text>
+          <Text>{this.props.userResult.difficulty}</Text>
+          <Text>{this.props.userResult.result}</Text>
+          <Text>{this.props.userResult.score}</Text>
         </View>
       </View>
     );

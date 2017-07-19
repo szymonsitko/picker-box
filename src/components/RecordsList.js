@@ -45,16 +45,16 @@ export class RecordsList extends Component {
     const newDateObject = new Date(rowData.datestamp);
     const formattedDate = newDateObject.toUTCString().replace("GMT", "");
     const difficultyString = rowData.difficulty === 0 && 'Easy' || rowData.difficulty === 1 && 'Medium' || rowData.difficulty === 2 && 'Hard';
-    const scoreArray = rowData.result.split(',');
+    const resultStringArray = rowData.result.split(',');
     return (
       <View style={{ margin: 4 }}>
         <Text style={styles.rowHeader}>User: {rowData.user}</Text>
         <Text style={[styles.rowTextStyle, { color: 'white' }]}>Score: {rowData.score}</Text>
         <Text style={styles.rowTextStyle}>Level: {difficultyString}</Text>
         <Text style={styles.rowDataText}>{formattedDate}</Text>
-        <Text style={styles.recordsText}>{scoreArray[1]} seconds</Text>
-        <Text style={styles.recordsText}>{scoreArray[3]} seconds</Text>
-        <Text style={[styles.recordsText, { marginBottom: 2 }]}>{scoreArray[2]} seconds</Text>
+        <Text style={styles.recordsText}>{resultStringArray[1]} seconds</Text>
+        <Text style={styles.recordsText}>{resultStringArray[3]} seconds</Text>
+        <Text style={[styles.recordsText, { marginBottom: 2 }]}>{resultStringArray[2]} seconds</Text>
       </View>
     );
   }

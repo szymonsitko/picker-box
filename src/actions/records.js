@@ -23,15 +23,10 @@ export function initializeDatabaseConnection(schema) {
 }
 
 export function storeNewGameDetails(user, difficulty) {
-  const records = realmDatabase.objects('Records');
-  realmDatabase.write(() => {
-    savedRecords = realmDatabase.create('Records', {
-        datestamp: Date.now(),
-        user: user,
-        difficulty: difficulty
-    });
-  });
-  const userObject = records[Object.keys(records).length - 1];
+  userObject = {};
+  userObject['datestamp'] = Date.now();
+  userObject['user'] = user;
+  userObject['difficulty'] = difficulty;
   return {
     type: types.STORE_GAME_DETAILS,
     payload: userObject
@@ -39,7 +34,6 @@ export function storeNewGameDetails(user, difficulty) {
 }
 
 export function storeFinishedGameResults(result) {
-  const records = realmDatabase.objects('Records');
   realmDatabase.write(() => {
     realmDatabase.create('Records',
       {
@@ -50,10 +44,18 @@ export function storeFinishedGameResults(result) {
         score: result.score
       }, true);
   });
+  const records = realmDatabase.objects('Records');
   const userObject = records.filtered(`datestamp = "${result.datestamp}"`);
   return {
     type: types.UPDATE_GAME_DETAILS,
-    payload: userObject
+    payload: userObject[0]
+  }
+}
+
+export function storeFinishedGameResultsOnReducer(result) {
+  return {
+    type: types.UPDATE_USER_RESULTS_ON_REDUCER,
+    payload: result
   }
 }
 
