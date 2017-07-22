@@ -68,11 +68,11 @@ class Game extends Component {
   storeGameResult(finalResult) {
     const statsString = `Player ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime},Tapped: ${this.state.tapCount} times`;
     const evaluatedTapCount = finalResult === 'won' ? this.state.tapCount : 0;
+    console.log("SCORE", scoreCalculator(this.refs.child.state.totalTime, this.props.user_object.difficulty, evaluatedTapCount));
     const result = {
       ...this.props.user_object,
       result: statsString,
       score: scoreCalculator(
-        this.state.gameTime,
         this.refs.child.state.totalTime,
         this.props.user_object.difficulty,
         evaluatedTapCount
@@ -99,7 +99,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={2}
+            countdownTime={this.state.gameTime}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes

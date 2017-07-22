@@ -1,6 +1,8 @@
-export function scoreCalculator(gameTime, totalTime, level, numberOfTaps) {
+export function scoreCalculator(totalTime, level, numberOfTaps) {
   if (numberOfTaps > 0) {
-    return Math.round(( (((gameTime + (totalTime * 2)) * (level + 1)) - numberOfTaps) * 10) / 2 );
+    return Math.round(
+      (((totalTime * 2) * (Math.pow(level + 1, 2))) + Math.floor((1 / numberOfTaps) * 1000))
+    );
   }
   if (numberOfTaps <= 0) {
     return 0;
