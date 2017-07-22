@@ -98,7 +98,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={1}
+            countdownTime={this.state.gameTime}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes

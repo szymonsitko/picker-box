@@ -1,15 +1,14 @@
 export const COLORS_EASY = [
-  '#ff0000',
-  '#ff8000',
-  '#ffbf00',
-  '#bfff00',
-  '#40ff00',
-  '#00ffbf',
-  '#00bfff',
+  '#2C3E50',
+  '#BDC3C7',
+  '#F39C12',
+  '#16A085',
+  '#8E44AD',
+  '#C0392B',
 ]
 
-export const COLORS_MEDIUM = COLORS_EASY.concat(['#0040ff'])
-export const COLORS_HARD = COLORS_MEDIUM.concat(['#ff00bf'])
+export const COLORS_MEDIUM = COLORS_EASY.concat(['#7F8C8D', '#D35400'])
+export const COLORS_HARD = COLORS_MEDIUM.concat(['#2ECC71', '#3498DB'])
 
 
 export const GAME_INSTRUCTIONS = "In order to pick some boxes, you need to tell \

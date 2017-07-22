@@ -57,7 +57,7 @@ class Timer extends Component {
   render() {
     return (
       <View>
-        <Header style={{ fontFamily: 'Visitor' }} title={"Time Left: " + this.state.totalTime} background="pink" />
+        <Header style={{ fontFamily: 'Visitor' }} title={"Time Left: " + this.state.totalTime} background="#ff4d94" />
         {!this.state.timerHasStopped ? this.renderTimerIsRunning() : this.renderTimerHasStopped()}
       </View>
     );
