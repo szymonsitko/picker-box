@@ -44,13 +44,17 @@ class Game extends Component {
 
   notifyUserScoredGame() {
     this.refs.child.stopTimer();
-    this.setState({ showEndGamePopup: true });
-    this.storeGameResult('won');
+    setTimeout(() => {
+      this.setState({ showEndGamePopup: true });
+      this.storeGameResult('won');
+    }, 1000);
   }
 
   notifyGameTimeOut() {
-    this.setState({ showEndGamePopup: true });
-    this.storeGameResult('lost');
+    setTimeout(() => {
+      this.setState({ showEndGamePopup: true });
+      this.storeGameResult('lost');
+    }, 1000);
   }
 
   notifyTimerStop() {
@@ -62,7 +66,7 @@ class Game extends Component {
   }
 
   storeGameResult(finalResult) {
-    const statsString = `Player ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime}`;
+    const statsString = `Player ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime},Tapped: ${this.state.tapCount} times`;
     const evaluatedTapCount = finalResult === 'won' ? this.state.tapCount : 0;
     const result = {
       ...this.props.user_object,
@@ -95,7 +99,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={this.state.gameTime}
+            countdownTime={2}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes

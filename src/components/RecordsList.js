@@ -52,6 +52,7 @@ export class RecordsList extends Component {
         <Text style={[styles.rowTextStyle, { color: 'white' }]}>Score: {rowData.score}</Text>
         <Text style={styles.rowTextStyle}>Level: {difficultyString}</Text>
         <Text style={styles.rowDataText}>{formattedDate}</Text>
+        <Text style={styles.recordsText}>{resultStringArray[4]}</Text>
         <Text style={styles.recordsText}>{resultStringArray[1]} seconds</Text>
         <Text style={styles.recordsText}>{resultStringArray[3]} seconds</Text>
         <Text style={[styles.recordsText, { marginBottom: 2 }]}>{resultStringArray[2]} seconds</Text>

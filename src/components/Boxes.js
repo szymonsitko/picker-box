@@ -14,8 +14,6 @@ class Boxes extends Component {
   state = {
     box1: { backgroundColor: 'pink' },
     box2: { backgroundColor: 'pink' },
-
-    // TEMPORARY!!
     box3: { backgroundColor: 'pink' },
     box4: { backgroundColor: 'pink' },
     box5: { backgroundColor: 'pink' },
@@ -26,24 +24,32 @@ class Boxes extends Component {
     box10: { backgroundColor: 'pink' },
     box11: { backgroundColor: 'pink' },
     box12: { backgroundColor: 'pink' },
+    lockScreen: false
   };
+
+  counterReachedTarget() {
+    this.setState({ lockScreen: true });
+    this.props.notifyUserScoredGame()
+  }
 
   changeBoxColor(boxId) {
     let object = {};
     object[boxId] = { backgroundColor: getRandomColor(boxColorsGenerator(this.props.difficulty))};
-    this.setState(object, function() {
-      this.props.incrementTapCount();
-      const primaryColor = this.state.box1.backgroundColor;
-      let index = 0;
-      while (index < 12) {
-        if (Object.values(this.state)[index].backgroundColor === primaryColor) {
-          index += 1;
-        } else {
-          break;
+    if (!this.state.lockScreen) {
+      this.setState(object, function() {
+        this.props.incrementTapCount();
+        const primaryColor = this.state.box1.backgroundColor;
+        let index = 0;
+        while (index < 12) {
+          if (Object.values(this.state)[index].backgroundColor === primaryColor) {
+            index += 1;
+          } else {
+            break;
+          }
         }
-      }
-      (index === 12 && index > 1) && this.props.notifyUserScoredGame();
-    })
+        (index === 12 && index > 1) && this.counterReachedTarget();
+      })
+    }
   }
 
   render() {

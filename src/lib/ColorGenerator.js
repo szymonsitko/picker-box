@@ -6,13 +6,6 @@ export function getRandomColor(colorsObject) {
   );
 }
 
-export function chooseColorPool(difficulty) {
-  switch (difficulty) {
-    case 0:
-      return
-  }
-}
-
 export function boxColorsGenerator(level) {
   // This will return number of colors for box building,
   // depending on the difficulty level!
