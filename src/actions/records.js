@@ -5,7 +5,7 @@ export function initializeDatabaseConnection(schema) {
   const records = realmDatabase.objects('Records');
 
   // Debugging
-  console.log("All database entries: ", records);
+  // console.log("All database entries: ", records);
 
   // Init some dummy user
   // realmDatabase.write(() => {
