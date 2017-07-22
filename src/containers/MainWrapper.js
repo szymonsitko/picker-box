@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, BackHandler } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import RNExitApp from 'react-native-exit-app';
 import { ActionCreators } from '../actions';
 import Main from './scenes/Main';
 
@@ -12,7 +13,7 @@ class MainWrapper extends Component {
 
   componentDidMount() {
     BackHandler.addEventListener('hardwareBackPress', function() {
-      BackHandler.exitApp();
+      RNExitApp.exitApp();
       return true;
     });
   }

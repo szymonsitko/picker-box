@@ -28,7 +28,7 @@ const styles = {
     borderWidth: 8,
     borderColor: 'rgba(0,27,0,0.6)',
     justifyContent: 'center',
-    opacity: .9
+    opacity: .8
   },
   firstBox: {
     textAlign: 'center',

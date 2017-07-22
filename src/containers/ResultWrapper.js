@@ -12,7 +12,7 @@ class ResultWrapper extends Component {
     this.navigator = null;
 
     this._handleBackButtonPress = this._handleBackButtonPress.bind(this);
-    this.userResult = this.props.user_object;
+    this.userData = this.props.user_object;
   }
 
   componentWillMount() {
@@ -21,10 +21,6 @@ class ResultWrapper extends Component {
 
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this._handleBackButtonPress);
-  }
-
-  componentDidMount() {
-    this.props.clearReducerData();
   }
 
   _handleBackButtonPress() {
@@ -37,7 +33,7 @@ class ResultWrapper extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Result { ...this.props } userResult={this.userResult}/>
+        <Result { ...this.props } userData={this.userData} />
       </View>
     )
   }

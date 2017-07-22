@@ -1,23 +1,28 @@
 import React, { Component } from 'react';
 import { View, Text, Dimensions, Image, BackHandler } from 'react-native';
 import { Actions } from 'react-native-router-flux';
+import RNExitApp from 'react-native-exit-app';
 import { Header } from '../../components/Header';
 import { Button } from '../../components/Button';
 
 const { width, height } = Dimensions.get('window');
 
 class Result extends Component {
+  componentDidMount() {
+    this.props.clearReducerData();
+  }
+
   render() {
-    const difficultyString = this.props.userResult.difficulty=== 0 && 'Easy' || this.props.userResult.difficulty === 1 && 'Medium' || this.props.userResult.difficulty === 2 && 'Hard';
-    const resultStringArray = this.props.userResult.result.split(',');
-    const scoreString = this.props.userResult.score > 0 ? "Player score: " + this.props.userResult.score : "No score for loosers!";
-    const dateString = Date(this.props.userResult.datestamp).split('GMT')[0];
+    const difficultyString = this.props.userData.difficulty === 0 && 'Easy' || this.props.userData.difficulty === 1 && 'Medium' || this.props.userData.difficulty === 2 && 'Hard';
+    const resultStringArray = this.props.userData.result.split(',');
+    const scoreString = this.props.userData.score > 0 ? "Player score: " + this.props.userData.score : "No score for loosers!";
+    const dateString = Date(this.props.userData.datestamp).split('GMT')[0];
     return (
       <View style={{ flex: 1 }}>
         <Image source={require('../../../assets/drawable/background_result.png')} style={styles.backgroundImage} />
         <Header style={{ fontFamily: 'Visitor' }} title="Result" background="#B54F79" />
           <View style={{ padding: 4 }}>
-            <Text style={styles.lineHeader}>Player: {this.props.userResult.user}</Text>
+            <Text style={styles.lineHeader}>Player: {this.props.userData.user}</Text>
             <Text style={styles.lineDataText}>{resultStringArray[0]}</Text>
             <Text style={styles.lineTextStyle}>Level: {difficultyString}</Text>
             <Text style={styles.lineDataText}>{resultStringArray[1]}</Text>
@@ -30,7 +35,7 @@ class Result extends Component {
               <Button
                 title="Quit"
                 style={styles.button}
-                onPress={() => BackHandler.exitApp()}
+                onPress={() => RNExitApp.exitApp()}
               />
             </View>
             <View style={styles.leftBottomContainer}>

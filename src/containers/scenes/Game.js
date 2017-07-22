@@ -68,7 +68,6 @@ class Game extends Component {
   storeGameResult(finalResult) {
     const statsString = `Player ${this.props.user_object.user} ${finalResult} the game!,Total game time: ${this.state.gameTime},Time left: ${this.refs.child.state.totalTime},Time used: ${this.state.gameTime - this.refs.child.state.totalTime},Tapped: ${this.state.tapCount} times`;
     const evaluatedTapCount = finalResult === 'won' ? this.state.tapCount : 0;
-    console.log("SCORE", scoreCalculator(this.refs.child.state.totalTime, this.props.user_object.difficulty, evaluatedTapCount));
     const result = {
       ...this.props.user_object,
       result: statsString,
@@ -99,7 +98,7 @@ class Game extends Component {
             ref="child"
             notifyGameTimeOut={this.notifyGameTimeOut.bind(this)}
             tapCount={this.state.tapCount}
-            countdownTime={this.state.gameTime}
+            countdownTime={1}
             difficulty={this.props.user_object.difficulty}
           />
           <Boxes
@@ -127,13 +126,13 @@ class Game extends Component {
       return (
         <View>
           <Modal
-            animationType={"slide"}
+            animationType={"fade"}
             transparent={true}
             visible={this.state.showEndGamePopup}
-            onRequestClose={() => {console.log("Modal cannot be closed.!")}}
+            onRequestClose={() => {}}
           >
-            <View style={styles.nonGameContainer}>
-              <Text style={styles.nonGameMessage}>Moving into result screen...</Text>
+            <View style={styles.postGameContainer}>
+              <Text style={styles.nonGameMessage}>Preparing results...</Text>
               <Text style={styles.nonGameBoldLabel}>!</Text>
             </View>
           </Modal>
@@ -174,6 +173,12 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'rgba(155, 48, 74, .7)',
+  },
+  postGameContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, .7)',
   },
   nonGameMessage: {
     fontSize: 32,

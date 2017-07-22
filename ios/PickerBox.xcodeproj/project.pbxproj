@@ -43,6 +43,7 @@
 		43D86E55448A403A98590F19 /* MunroNarrow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD76721E514A466FA9F184FC /* MunroNarrow.ttf */; };
 		2B6742F5FE2040A2BEEB01F3 /* MunroSmall.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1480224869404C958459AE85 /* MunroSmall.ttf */; };
 		95264D09E8BB4B2D8580D7FB /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C08286946AD4FAA8F3604BA /* PressStart2P-Regular.ttf */; };
+		6D67154B8CA04CBAAC2882F0 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6379FB93EEE948ABB4B05DFF /* PressStart2P.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -271,6 +272,7 @@
 		BD76721E514A466FA9F184FC /* MunroNarrow.ttf */ = {isa = PBXFileReference; name = "MunroNarrow.ttf"; path = "../assets/fonts/MunroNarrow.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		1480224869404C958459AE85 /* MunroSmall.ttf */ = {isa = PBXFileReference; name = "MunroSmall.ttf"; path = "../assets/fonts/MunroSmall.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9C08286946AD4FAA8F3604BA /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; name = "PressStart2P-Regular.ttf"; path = "../assets/fonts/PressStart2P-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		6379FB93EEE948ABB4B05DFF /* PressStart2P.ttf */ = {isa = PBXFileReference; name = "PressStart2P.ttf"; path = "../assets/fonts/PressStart2P.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -523,6 +525,7 @@
 				BD76721E514A466FA9F184FC /* MunroNarrow.ttf */,
 				1480224869404C958459AE85 /* MunroSmall.ttf */,
 				9C08286946AD4FAA8F3604BA /* PressStart2P-Regular.ttf */,
+				6379FB93EEE948ABB4B05DFF /* PressStart2P.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -891,6 +894,7 @@
 				43D86E55448A403A98590F19 /* MunroNarrow.ttf in Resources */,
 				2B6742F5FE2040A2BEEB01F3 /* MunroSmall.ttf in Resources */,
 				95264D09E8BB4B2D8580D7FB /* PressStart2P-Regular.ttf in Resources */,
+				6D67154B8CA04CBAAC2882F0 /* PressStart2P.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
