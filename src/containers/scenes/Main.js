@@ -36,16 +36,12 @@ class Main extends Component {
           <Button title="Info" onPress={this.showInfoModal.bind(this)} style={[styles.buttonText, { color: '#d5f6ffff'} ]} />
         </View>
         <Popup showModal={this.showInfoModal.bind(this)} modalVisible={this.state.infoModalVisible}>
-
           <Header style={{ fontFamily: 'Visitor' }} title="Info" background="#06939B"/>
           <Info />
-
         </Popup>
         <Popup showModal={this.showRecordsModal.bind(this)} modalVisible={this.state.recordsModalVisible}>
-
           <Header style={{ fontFamily: 'Visitor' }} title="Records" background="#ff1a1d"/>
           <RecordsList { ...this.props } />
-
         </Popup>
       </View>
     )

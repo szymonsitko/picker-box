@@ -12,7 +12,7 @@ class ResultWrapper extends Component {
     this.navigator = null;
 
     this._handleBackButtonPress = this._handleBackButtonPress.bind(this);
-    this.userData = this.props.user_object;
+    this.userResult = this.props.user_object;
   }
 
   componentWillMount() {
@@ -25,7 +25,7 @@ class ResultWrapper extends Component {
 
   _handleBackButtonPress() {
     if (this.props.navigation.state.routeName === 'result') {
-      Actions.welcome();
+      Actions.welcome({ type: 'reset' });
     }
     return true;
   }
@@ -33,7 +33,7 @@ class ResultWrapper extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Result { ...this.props } userData={this.userData} />
+        <Result { ...this.props } userData={this.userResult}/>
       </View>
     )
   }

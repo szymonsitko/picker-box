@@ -72,7 +72,7 @@ class Game extends Component {
       ...this.props.user_object,
       result: statsString,
       score: scoreCalculator(
-        this.refs.child.state.totalTime,
+        this.state.gameTime,
         this.props.user_object.difficulty,
         evaluatedTapCount
       )
